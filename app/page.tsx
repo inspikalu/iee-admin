@@ -1,7 +1,7 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { Settings, Users, FileText, PieChart } from 'lucide-react';
+// import { Settings, Users, FileText, PieChart } from 'lucide-react';
 
 const WasteManagementDashboard = () => {
 
