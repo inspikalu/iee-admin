@@ -41,7 +41,7 @@ const Sidebar = () => {
     if (currentLink) {
       setActiveTab(currentLink.id);
     }
-  }, [pathname, links]);
+  }, [pathname]);
 
   return (
     <nav className="w-full h-screen">
