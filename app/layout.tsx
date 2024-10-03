@@ -33,7 +33,9 @@ export default function RootLayout({
         <Navbar />
         <div className="grid w-full grid-cols-[.5fr_3fr]">
           <Sidebar />
-          {children}
+          <div className="w-full h-full bg-[#E8E9ED]">
+            {children}
+          </div>
         </div>
       </body>
     </html>

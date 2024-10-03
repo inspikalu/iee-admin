@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Settings, Users, FileText, PieChart } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const links = [
   {
@@ -43,18 +44,18 @@ const Sidebar = () => {
   }, [pathname, links]);
 
   return (
-    <nav className="w-full pr-4">
-      <ul className="space-y-2">
+    <nav className="w-full h-screen">
+      <ul className="space-y-2 h-[90%] mt-3 rounded-[1.75rem] text-sm">
         {links.map((link) => (
           <li key={link.id}>
-            <button
-              className={`flex items-center space-x-2 w-full p-2 rounded ${activeTab === link.id ? 'bg-green-600' : 'hover:bg-gray-800'
+            <Link href={`${link.path}`}
+              className={`flex items-center justify-center md:justify-start space-x-2 w-full py-4 px-3 ${activeTab === link.id ? 'bg-[#86f0a954] border-r-[.5rem] border-r-green-600 ' : 'hover:bg-green-200'
                 }`}
               onClick={() => setActiveTab(link.id)}
             >
               {link.icon}
-              <span>{link.label}</span>
-            </button>
+              <span className='hidden md:block'>{link.label}</span>
+            </Link>
           </li>
         ))}
       </ul>
