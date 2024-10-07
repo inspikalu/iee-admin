@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { Settings, Users, FileText, PieChart } from 'lucide-react';
+import { Users, FileText, PieChart } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { FaMoneyBillTrendUp } from 'react-icons/fa6';

@@ -3,12 +3,16 @@ import { FormEvent, useState } from 'react'
 import Image from 'next/image'
 import { FiMail } from 'react-icons/fi'
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { baseBackendUrl } from '../const'
 import { useLoginContext } from '@/contexts/LoginContext'
 import Alert from '@/components/Alert'
 import "../globals.css"
 import { useRouter } from 'next/navigation'
+
+interface ErrorResponse {
+  message: string;
+}
 
 export default function LoginPage() {
   const router = useRouter()
@@ -52,12 +56,25 @@ export default function LoginPage() {
         , 700)
       console.log(context)
 
-    } catch (err) {
-      if (err?.response) {
-        console.log(err?.response, "This is the error")
-        handleOpenAlert(`Log In failed: ${err?.response.data.message}`, true)
-        setIsLoading(false)
+    } catch (err: unknown) {
+      // Cast the error to AxiosError to access the response
+      const axiosError = err as AxiosError<ErrorResponse>;
+
+      if (axiosError.response) {
+        console.log(axiosError.response, "This is the error");
+
+        if (axiosError.response.data) {
+          // Now TypeScript knows that data has a message property
+          if (axiosError.response.data.message) {
+            handleOpenAlert(`Log In failed: ${axiosError.response.data.message}`, true);
+          }
+        }
+      } else {
+        console.log(axiosError.message);
+        handleOpenAlert(`Log In failed: ${axiosError.message}`, true);
       }
+
+      setIsLoading(false);
     }
 
   }

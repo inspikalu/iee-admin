@@ -1,34 +1,64 @@
 "use client"
 
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { baseBackendUrl } from "@/app/const"
 import { useEffect, useState } from "react"
 import { useLoginContext } from "@/contexts/LoginContext"
 
+// Define the type for reported ads
+interface Ad {
+    id: number;
+    title: string;
+    description: string;
+    // Add any other fields your ads have
+}
 
 function ManageAdsPage() {
-    const [reportedAds, setReportedAds] = useState([])
+    // Explicitly type the state for reported ads
+    const [reportedAds, setReportedAds] = useState<Ad[]>([])
+    
+    // Destructure userData from useLoginContext, assuming it has token property
     const { userData } = useLoginContext()
 
-    const getAds = async function () {
+    // Define the type for the API response if needed
+    const getAds = async () => {
         try {
-            const response = await axios.get(`${baseBackendUrl}/admin/reported-ads`, {
+            const response = await axios.get<Ad[]>(`${baseBackendUrl}/admin/reported-ads`, {
                 headers: {
-                    "Authorization": `Bearer ${userData.token}`
-                }
+                    Authorization: `Bearer ${userData?.token}`,  // Optional chaining in case userData is undefined
+                },
             })
             console.log(response)
             setReportedAds(response.data)
-        } catch (error) {
-            console.log(error.response.data)
+        } catch (error: unknown) {  // Use `unknown` here
+            // Cast the error to AxiosError safely
+            const axiosError = error as AxiosError;
+            if (axiosError.response) {
+                console.log(axiosError.response.data)
+            } else {
+                console.log(axiosError.message)
+            }
         }
     }
 
+    // Fetch ads on component mount
     useEffect(() => {
-        getAds()
-    }, [])
+        if (userData?.token) {
+            getAds()
+        }
+    }, [userData?.token])
+
     return (
-        <div>Manage Ads</div>
+        <div>
+            <h1>Manage Ads</h1>
+            <ul>
+                {reportedAds.map(ad => (
+                    <li key={ad.id}>
+                        <strong>{ad.title}</strong>: {ad.description}
+                    </li>
+                ))}
+            </ul>
+        </div>
     )
 }
 
