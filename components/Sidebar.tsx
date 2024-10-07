@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Settings, Users, FileText, PieChart } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { FaMoneyBillTrendUp } from 'react-icons/fa6';
 
 const links = [
   {
@@ -24,11 +25,11 @@ const links = [
     path: '/manage-users',
   },
   {
-    id: 'profile',
-    icon: <Settings size={20} />,
-    label: 'Profile',
-    path: '/profile',
-  },
+    id: 'finance',
+    icon: <FaMoneyBillTrendUp size={20} />,
+    label: 'Finance',
+    path: '/finance',
+  }
 ];
 
 const Sidebar = () => {
