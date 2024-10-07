@@ -38,7 +38,7 @@ export default function RootLayout({
               </div>
 
               {/* Scrollable content */}
-              <div className="h-full overflow-y-auto pt-16"> {/* Adjust pt-16 based on your Navbar height */}
+              <div className="h-full overflow-y-auto pt-16 bg-white"> {/* Adjust pt-16 based on your Navbar height */}
                 {children}
               </div>
             </div>

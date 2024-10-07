@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { FaMoneyBillTrendUp } from 'react-icons/fa6';
 import Image from 'next/image';
 import { Poppins } from "next/font/google"
+import { FiAlertTriangle } from 'react-icons/fi'
+import { FcSupport } from 'react-icons/fc';
 
 const poppins = Poppins({
   weight: ['400', "100", "200", "300", "500", "600", "700", "800", "900"],
@@ -36,6 +38,18 @@ const links = [
     icon: <FaMoneyBillTrendUp size={20} />,
     label: 'Finance',
     path: '/finance',
+  },
+  {
+    id: 'dispute',
+    icon: <FiAlertTriangle size={20} />,
+    label: 'Dispute',
+    path: '/dispute',
+  },
+  {
+    id: 'support',
+    icon: <FcSupport color='black' size={20} />,
+    label: 'Support',
+    path: '/support',
   }
 ];
 

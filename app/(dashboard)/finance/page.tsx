@@ -61,21 +61,21 @@ const FinancePage = () => {
                 <div className="bg-white p-5 w-full shadow-md text-center">
                     <FaMoneyBill size={40} color="#2ecc71" />
                     <h3 className="text-lg text-gray-800 my-2">Total Revenue</h3>
-                    <p className="text-2xl font-bold text-green-600">$12,000</p>
+                    <p className="text-2xl font-bold text-green-600">&#8358;12,000</p>
                     <Line data={dummyRevenueData} />
                 </div>
 
                 <div className="bg-white p-5 w-full shadow-md text-center">
                     <FaArrowDown size={40} color="#e74c3c" />
                     <h3 className="text-lg text-gray-800 my-2">Total Expenses</h3>
-                    <p className="text-2xl font-bold text-red-600">$9,000</p>
+                    <p className="text-2xl font-bold text-red-600">&#8358;9,000</p>
                     <Line data={dummyExpenseData} />
                 </div>
 
                 <div className="bg-white p-5 w-full shadow-md text-center">
                     <FaArrowUp size={40} color="#3498db" />
                     <h3 className="text-lg text-gray-800 my-2">Net Profit</h3>
-                    <p className="text-2xl font-bold text-blue-600">$3,000</p>
+                    <p className="text-2xl font-bold text-blue-600">&#8358;3,000</p>
                     <p className="text-sm text-gray-500">Monthly Profit</p>
                 </div>
             </div>
@@ -120,12 +120,12 @@ const FinancePage = () => {
                         <tr>
                             <td className="border-b py-3 px-4">2024-01-01</td>
                             <td className="border-b py-3 px-4">Revenue</td>
-                            <td className="border-b py-3 px-4">$500</td>
+                            <td className="border-b py-3 px-4">&#8358;500</td>
                         </tr>
                         <tr>
                             <td className="border-b py-3 px-4">2024-01-02</td>
                             <td className="border-b py-3 px-4">Expense</td>
-                            <td className="border-b py-3 px-4">$200</td>
+                            <td className="border-b py-3 px-4">&#8358;200</td>
                         </tr>
                         {/* Add more rows as needed */}
                     </tbody>
