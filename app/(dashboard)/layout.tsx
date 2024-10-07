@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar"
 import Sidebar from "@/components/Sidebar";
 import PrivateRoute from "@/components/PrivateRoute";
+import { Poppins } from "next/font/google"
 
-const geistSans = localFont({
-  src: "../fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "../fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const poppins = Poppins({
+  weight: ['400', "100", "200", "300", "500", "600", "700", "800", "900"],
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,19 +22,48 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#FFFFF0] text-black`}
-      >
+      <body className={`${poppins.className} antialiased bg-[#FFFFF0] text-black`}>
         <PrivateRoute>
-          <Navbar />
-          <div className="grid w-full grid-cols-[.5fr_3fr]">
-            <Sidebar />
-            <div className="w-full h-full bg-[#E8E9ED] overflow-auto">
-              {children}
+          <div className="relative w-full h-screen overflow-hidden">
+            {/* Sidebar */}
+            <div className="fixed top-0 left-0 w-1/5 h-full bg-[#FFFFF0] z-10">
+              <Sidebar />
+            </div>
+
+            {/* Main content area */}
+            <div className="absolute top-0 right-0 w-4/5 h-full bg-white">
+              {/* Navbar */}
+              <div className="fixed top-0 right-0 w-4/5 z-10">
+                <Navbar />
+              </div>
+
+              {/* Scrollable content */}
+              <div className="h-full overflow-y-auto pt-16"> {/* Adjust pt-16 based on your Navbar height */}
+                {children}
+              </div>
             </div>
           </div>
         </PrivateRoute>
       </body>
     </html>
   );
+  /* return (
+    <html lang="en">
+      <body
+        className={`${poppins.className} antialiased bg-[#FFFFF0] text-black`}
+      >
+        <PrivateRoute>
+          <div className="grid w-full h-screen overflow-hidden grid-cols-[.5fr_3fr]">
+            <Sidebar />
+            <div className="flex flex-col w-full h-full bg-white">
+              <Navbar />
+              <div className="flex-grow overflow-y-auto">
+                {children}
+              </div>
+            </div>
+          </div>
+        </PrivateRoute>
+      </body>
+    </html>
+  ); */
 }

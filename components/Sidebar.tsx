@@ -4,6 +4,13 @@ import { Users, FileText, PieChart } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { FaMoneyBillTrendUp } from 'react-icons/fa6';
+import Image from 'next/image';
+import { Poppins } from "next/font/google"
+
+const poppins = Poppins({
+  weight: ['400', "100", "200", "300", "500", "600", "700", "800", "900"],
+  subsets: ['latin'],
+})
 
 const links = [
   {
@@ -45,12 +52,20 @@ const Sidebar = () => {
   }, [pathname]);
 
   return (
-    <nav className="w-full h-screen">
-      <ul className="space-y-2 h-[90%] mt-3 rounded-[1.75rem] text-sm">
+    <nav className={`w-full h-screen grid grid-rows-[4.3rem_3fr] bg-[#F1F2F7] ${poppins.className}`}>
+      <div className='border-b border-b-[#C8CBD9] flex items-center justify-start px-3'>
+        <Image
+          src="/logo_1.png"
+          alt="Example Image"
+          width={100}
+          height={100}
+        />
+      </div>
+      <ul className="space-y-2 h-[90%] mt-3 rounded-[1.75rem] text-sm px-3">
         {links.map((link) => (
           <li key={link.id}>
             <Link href={`${link.path}`}
-              className={`flex items-center justify-center md:justify-start space-x-2 w-full py-4 px-3 ${activeTab === link.id ? 'bg-[#86f0a954] border-r-[.5rem] border-r-green-600 ' : 'hover:bg-green-200'
+              className={`flex items-center justify-center md:justify-start space-x-2 w-full py-4 px-3 rounded-md ${activeTab === link.id ? 'bg-green-200 bg-opacity-60 text-green-600 font-bold ' : 'hover:bg-green-200'
                 }`}
               onClick={() => setActiveTab(link.id)}
             >
