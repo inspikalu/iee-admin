@@ -54,12 +54,12 @@ const SupportPage: React.FC = () => {
             <div className="flex-1 flex flex-col overflow-hidden">
 
                 {/* Dashboard Content */}
-                <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4">
+                <main className="flex-1 overflow-x-hidden overflow-y-auto bg-white p-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Messaging System */}
-                        <Card>
+                        <Card className='overflow-hidden'>
                             <h2 className="text-lg font-bold mb-2">Messaging System</h2>
-                            <Input placeholder="Search messages..." className="mb-2" />
+                            <Input placeholder="Search messages..." className="mb-2 w-full" />
                             <div className="space-y-2">
                                 <div className="bg-white p-2 rounded shadow">
                                     <p className="font-semibold">John Doe</p>
@@ -103,8 +103,10 @@ const SupportPage: React.FC = () => {
                         {/* Feature Requests */}
                         <Card className="md:col-span-2 lg:col-span-3">
                             <h2 className="text-lg font-bold mb-2">Feature Requests</h2>
-                            <Textarea placeholder="Submit a new feature request..." className="mb-2" />
-                            <Button variant="solid">Submit Request</Button>
+                           <div className='flex items-center gap-3 flex-wrap'>
+                           <Textarea placeholder="Submit a new feature request..." className="mb-2" />
+                           <Button variant="solid">Submit Request</Button>
+                           </div>
                             <div className="mt-4 space-y-2">
                                 <div className="bg-white p-2 rounded shadow">
                                     <p className="font-semibold">Waste Sorting Guide</p>
