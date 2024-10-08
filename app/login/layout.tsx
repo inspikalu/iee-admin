@@ -22,7 +22,7 @@ export default function RootLayout({
       <body
         className={`${poppins.className} antialiased bg-[#FFFFF0] text-black`}
       >
-        <div className="grid w-full h-screen grid-cols-[2fr_1fr]">
+        <div className="flex flex-col md:grid w-full h-screen md:grid-cols-[2fr_1fr]">
           <div className="w-full h-full bg-[#E8E9ED] overflow-auto">
             {children}
           </div>
