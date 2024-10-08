@@ -23,12 +23,14 @@ export default function RootLayout({
         className={`${poppins.className} antialiased bg-[#FFFFF0] text-black`}
       >
         <div className="grid w-full h-screen grid-cols-[2fr_1fr]">
-          <div className="overflow-hidden">
-            <img src={"/illustration.jpg"} className="w-full h-full object-cover" alt="Illustration" />
-          </div>
           <div className="w-full h-full bg-[#E8E9ED] overflow-auto">
             {children}
           </div>
+          
+          <div className="overflow-hidden">
+            <img src={"/illustration.jpg"} className="w-full h-full object-cover" alt="Illustration" />
+          </div>
+
         </div>
       </body>
     </html>

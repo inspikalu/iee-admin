@@ -119,7 +119,7 @@ const ManageUsersPage = () => {
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
-      <h1 className="text-3xl font-bold text-green-700 mb-6 text-center">Manage Users</h1>
+      <h1 className="text-3xl font-bold text-green-700 mb-6 text-left">Manage Users</h1>
 
       {/* Search Input */}
       <div className="mb-6 flex justify-center">
