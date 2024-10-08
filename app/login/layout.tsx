@@ -27,7 +27,7 @@ export default function RootLayout({
             {children}
           </div>
           
-          <div className="overflow-hidden">
+          <div className="overflow-hidden hidden md:block">
             <img src={"/illustration.jpg"} className="w-full h-full object-cover" alt="Illustration" />
           </div>
 
